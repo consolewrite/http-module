@@ -1,3 +1,5 @@
+var exports = module.exports = handleRequest;
+
 function handle_GET_request(response) {
     response.writeHead(200,{'Content-Type':'text/plain'});
     response.end('GET action was requested');
@@ -28,9 +30,7 @@ function handle_bad_request(response) {
     response.end('Bad request');
 }
 
-exports.port = 8180;
-exports.host = '127.0.0.1';
-exports.handleRequest = function(request, response) {
+function handleRequest(request, response) {
     switch(request.method){
         case 'GET' :
         handle_GET_request(response);
@@ -54,6 +54,9 @@ exports.handleRequest = function(request, response) {
 
     console.log(request.method + ' request processing ended');
 }
+exports.port = 8180;
+exports.host = '127.0.0.1';
+
 
 
 
